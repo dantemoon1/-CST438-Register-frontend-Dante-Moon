@@ -88,7 +88,7 @@ class AddStudent extends Component{
     }
 }
 
-//AddStudent.propTypes = {
+//AddStudent.propTypes = { //use this if declaring the function elsewhere and passing it as a prop
 //    addStudent: PropTypes.func.isRequired
 //}
 
