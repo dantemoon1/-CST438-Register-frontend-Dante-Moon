@@ -15,22 +15,22 @@ import {SERVER_URL} from '../constants.js'
 class AddStudent extends Component{
     constructor(props){
         super(props);
-        this.state = {open: false, name: '', email: ''};
+        this.state = {open: false, name: '', email: ''}; //open is for the popup, name and email are for the text fields
     };
 
-    handleClickOpen = () => {
+    handleClickOpen = () => { //opens the popup
         this.setState({open:true});
     };
 
-    handleClose = () => {
+    handleClose = () => { //closes the popup
         this.setState({open:false});
     };
 
-    handleChangeName = (event) => {
+    handleChangeName = (event) => { //handler for name field
         this.setState({name: event.target.value});
     };
 
-    handleChangeEmail = (event) => {
+    handleChangeEmail = (event) => { //handler for email field
         this.setState({email: event.target.value});
     };
 
@@ -39,23 +39,23 @@ class AddStudent extends Component{
         //console.log(this.state.email);
         
         const token = Cookies.get('XSRF-TOKEN');
-        fetch(`http://localhost:8080/student/?email=${this.state.email}&name=${this.state.name}`,
+        fetch(`http://localhost:8080/student/?email=${this.state.email}&name=${this.state.name}`, //post request to add a student
         {
             method: 'POST',
             headers: {'X-XSRF-TOKEN': token, 'Content-Type': 'application/json'},
             //I did have to enable CORS in the backend springboot app for this to work
         }).then((response) => {
             console.log(response.json());
-            if(response.status == 200){
+            if(response.status == 200){ //if the response is 200, then the student was added successfully
                 toast.success("Student added successfully.", {
                     position: toast.POSITION.BOTTOM_LEFT
                 });
-            } else if(response.status == 400){
+            } else if(response.status == 400){ //if the response is 400, then the student already exists
                 toast.error("Student already exists.", {
                     position: toast.POSITION.BOTTOM_LEFT
                 });
-            } else {
-                toast.error("Student could not be added.", {
+            } else { //otherwise, there was an error
+                toast.error("Student could not be added.", { 
                     position: toast.POSITION.BOTTOM_LEFT
                 });
             }
