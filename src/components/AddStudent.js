@@ -42,7 +42,7 @@ class AddStudent extends Component{
         fetch(`http://localhost:8080/student/?email=${this.state.email}&name=${this.state.name}`,
         {
             method: 'POST',
-            headers: {'X-XSRF-TOKEN': token},
+            headers: {'X-XSRF-TOKEN': token, 'Content-Type': 'application/json'},
             //I did have to enable CORS in the backend springboot app for this to work
         }).then((response) => {
             console.log(response.json());
@@ -70,7 +70,7 @@ class AddStudent extends Component{
         return(
             <div>
                 <Button variant="outlined" color="primary" style={{margin: 10}} onClick={this.handleClickOpen}>
-                    Add Student
+                    Add Student (popup)
                 </Button>
                 <Dialog open={this.state.open} onClose={this.handleClose}>
                     <DialogTitle>Add Student</DialogTitle>

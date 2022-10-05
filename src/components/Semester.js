@@ -66,6 +66,9 @@ class Semester extends Component {
                 Get Schedule
               </Button>
               <AddStudent /> 
+              <Button component={Link} to={{pathname:'/addstudent'}} variant="outlined" color="primary" style={{margin: 10}}>
+                Add Student (new page)
+              </Button>
               <ToastContainer autoClose={4500} />  
           </div>
       </div>
