@@ -69,7 +69,7 @@ class AddStudent extends Component{
     render(){
         return(
             <div>
-                <Button variant="outlined" color="primary" style={{margin: 10}} onClick={this.handleClickOpen}>
+                <Button variant="outlined" color="primary" style={{margin: 10}} onClick={this.handleClickOpen} id="addstudentpopup">
                     Add Student (popup)
                 </Button>
                 <Dialog open={this.state.open} onClose={this.handleClose}>
